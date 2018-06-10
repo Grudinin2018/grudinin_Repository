@@ -86,24 +86,42 @@
           var name = $(e).attr('name');
           _g_data[name].need = need;
         });
+        $('._to_need').each(function (el, e) {
+          console.log(e.value);
+          
+          var name = $(e).attr('name');
+          if (_g_data[name].need == null) {
+            _g_data[name].need = e.value;
+          }
+        });
         $('._date').each(function (el, e) {
           var date = $(e).attr('value');
           var name = $(e).attr('name');
           _g_data[name].date = date;
         });
         $('._to_date').each(function (el, e) {
-          var date = $(e).attr('value');
-          if (date != null) {
+          var name = $(e).attr('name');
+          if (_g_data[name].date == null) {
             date = e.value;
             $.datepicker.parseDate( "yy-mm-dd", date );
-          }
-            var name = $(e).attr('name');
             _g_data[name].date = date;
+          }
+            
         });
 
         $.each(_g_data, function(key, value) {
-          if (value.need != '' && value.date != '') console.log(key);
+          //console.log(value);
           
+          if (value.need != '' && value.date != '') {
+            var name = key.split('_')[0];
+            var type = key.split('_')[1];
+            if (type == 'цветущая')
+            {
+              var date = value.date;
+              console.log(date);
+            }
+          }
+
         });
 
       });
@@ -130,7 +148,7 @@
                     echo "<div name='{$ska_name}' class='_date' value='{$typevalue['date']}'>Date: {$typevalue['date']}</div>";
                     ?>
                     <p>
-                    <br><input type="number" name='<?php echo $ska_name ?>' placeholder="Сколько нужно" style="width: 200px;">
+                    <br><input type="number" name='<?php echo $ska_name ?>' class="_to_need" placeholder="Сколько нужно" style="width: 200px;">
                     <label for='<?php echo $key; ?>'>До</label>
                     <input type="text" class="to _to_date" name='<?php echo $ska_name ?>'>
                     </p>
