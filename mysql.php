@@ -1,8 +1,8 @@
 <?php
 	
 	$url = "localhost";
-	$name = "vdimitrya_fialki";
-	$pass = "g0t0x0560addeff123";
+	$name = "mysql";
+	$pass = "mysql";
 	$base = "vdimitrya_fialki";
 
 	function mysqlQuery($query) {

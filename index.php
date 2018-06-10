@@ -14,7 +14,8 @@
 
     function init() {
         $query = "  SELECT 
-                    POST.post_title as title, META.meta_value as stock
+                    POST.post_title as title, META.meta_value as stock,
+                    PROGNOZ.need as need, PROGNOZ.diff as diff
                     from wp_posts POST
                     inner join
                     (
@@ -23,6 +24,11 @@
                         from wp_postmeta
                         where meta_key = '_stock'
                     ) META on META.post_id = POST.ID 
+                    LEFT OUTER JOIN
+                    (
+                        select *
+                        from my_prognoz
+                    ) PROGNOZ on PROGNOZ.id = POST.ID
                     where POST.post_type = 'product'
                     order by POST.post_date desc
         ";
@@ -37,6 +43,8 @@
             $data[$name]['stock'] += $row['stock'];
             $data[$name]['type'][$type]['name'] = $type;
             $data[$name]['type'][$type]['stock'] = $row['stock'];
+            $data[$name]['type'][$type]['need'] = $row['need'];
+            $data[$name]['type'][$type]['diff'] = $row['diff'];
         }
         //print_r($data);
         ?>
