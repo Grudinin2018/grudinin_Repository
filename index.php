@@ -92,7 +92,8 @@
           _g_data[name].date = date;
         });
         $('._to_date').each(function (el, e) {
-          var date = $(e).datepicker('getDate');
+          var date = e.value;
+          if (date != null) $.datepicker.parseDate( "yy-mm-dd", date );
             var name = $(e).attr('name');
             _g_data[name].date = date;
         });
