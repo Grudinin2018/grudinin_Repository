@@ -108,15 +108,26 @@
         });
 
         $.each(_g_data, function(key, value) {
-          //console.log(value);
-          
           if (value.need != '' && value.date != '') {
             var name = key.split('_')[0];
             var type = key.split('_')[1];
             if (type == 'цветущая')
             {
-              var date = value.date;
-              console.log(date);
+              if (value.need > value.stock) {
+                
+              }
+            } 
+            else if (type == 'детки')
+            {
+              if (value.need > value.stock) {
+                
+              }
+            }
+            if (type == 'лист')
+            {
+              if (value.need > value.stock) {
+                
+              }
             }
           }
 
@@ -159,7 +170,7 @@
         ?>
         </div>
         <hr>
-        <button class="button">Вычислить</button>
+        <button class="button _calc">Вычислить</button>
         <?php
     }
     init();
