@@ -87,11 +87,9 @@
           _g_data[name].need = need;
         });
         $('._to_need').each(function (el, e) {
-          console.log(e.value);
-          
-          var name = $(e).attr('name');
-          if (_g_data[name].need == null) {
-            _g_data[name].need = e.value;
+           var name = $(e).attr('name');
+          if (_g_data[name].need == '') {
+            _g_data[name].need = $(e).val();
           }
         });
         $('._date').each(function (el, e) {
@@ -101,7 +99,7 @@
         });
         $('._to_date').each(function (el, e) {
           var name = $(e).attr('name');
-          if (_g_data[name].date == null) {
+          if (_g_data[name].date == '') {
             date = e.value;
             $.datepicker.parseDate( "yy-mm-dd", date );
             _g_data[name].date = date;
