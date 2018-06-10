@@ -57,6 +57,7 @@
             } );
         </script>
           <script>
+          var _g_data = {};
   $( function() {
     
     var to = $( ".to" ).datepicker({
@@ -69,10 +70,37 @@
       .on( "change", function() {
         
       });
+
+      $('._calc').click(function () {
+        $('._name').each(function (el, e) {
+          var name = $(e).attr('name');
+          _g_data[name] = {};
+        });
+        $('._stock').each(function (el, e) {
+          var stock = $(e).attr('value');
+          var name = $(e).attr('name');
+          _g_data[name].stock = stock;
+        });
+        $('._need').each(function (el, e) {
+          var need = $(e).attr('value');
+          var name = $(e).attr('name');
+          _g_data[name].need = need;
+        });
+        $('._date').each(function (el, e) {
+          var date = $(e).attr('value');
+          var name = $(e).attr('name');
+          _g_data[name].date = date;
+        });
+        $('._to_date').each(function (el, e) {
+          var date = $(e).datepicker('getDate');
+            var name = $(e).attr('name');
+            _g_data[name].date = date;
+        });
+      });
  
   } );
   </script>
-        <button class="button">Вычислить</button>
+        <button class="button _calc">Вычислить</button>
         <hr>
         <div id="accordion">
         <?php
@@ -84,16 +112,17 @@
                 <?php
                 foreach ($value['type'] as $typevalue) 
                 {
-                    echo "<div name='{$key}' class='_name'>{$typevalue['name']}</div>";
-                    echo "<div name='{$key}' class='_stock'>Stock: {$typevalue['stock']}</div>";
-                    echo "<div name='{$key}' class='_need'>Need: {$typevalue['need']}</div>";
-                    echo "<div name='{$key}' class='_diff'>Diff: {$typevalue['diff']}</div>";
-                    echo "<div name='{$key}' class='_date'>Date: {$typevalue['date']}</div>";
+                  $ska_name = $key.'_'.$typevalue['name'];
+                    echo "<div name='{$ska_name}' class='_name'>{$typevalue['name']}</div>";
+                    echo "<div name='{$ska_name}' class='_stock' value='{$typevalue['stock']}'>Stock: {$typevalue['stock']}</div>";
+                    echo "<div name='{$ska_name}' class='_need' value='{$typevalue['need']}'>Need: {$typevalue['need']}</div>";
+                    echo "<div name='{$ska_name}' class='_diff'>Diff: {$typevalue['diff']}</div>";
+                    echo "<div name='{$ska_name}' class='_date' value='{$typevalue['date']}'>Date: {$typevalue['date']}</div>";
                     ?>
                     <p>
-                    <br><input type="number" placeholder="Сколько нужно" style="width: 200px;">
+                    <br><input type="number" name='<?php echo $ska_name ?>' placeholder="Сколько нужно" style="width: 200px;">
                     <label for='<?php echo $key; ?>'>До</label>
-                    <input type="text" class="to _to_date" name='<?php echo $key; ?>'>
+                    <input type="text" class="to _to_date" name='<?php echo $ska_name ?>'>
                     </p>
                     <?php
                 }
