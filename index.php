@@ -14,8 +14,8 @@
 
     function init() {
         $query = "  SELECT 
-                    POST.post_title as title, META.meta_value as stock,
-                    PROGNOZ.need as need, PROGNOZ.diff as diff
+                    POST.id as id, POST.post_title as title, META.meta_value as stock,
+                    PROGNOZ.need as need, PROGNOZ.diff as diff, PROGNOZ.date as `date`
                     from wp_posts POST
                     inner join
                     (
@@ -45,6 +45,8 @@
             $data[$name]['type'][$type]['stock'] = $row['stock'];
             $data[$name]['type'][$type]['need'] = $row['need'];
             $data[$name]['type'][$type]['diff'] = $row['diff'];
+            $data[$name]['type'][$type]['id'] = $row['id'];
+            $data[$name]['type'][$type]['date'] = $row['date'];
         }
         //print_r($data);
         ?>
@@ -56,7 +58,7 @@
         </script>
           <script>
   $( function() {
-    var dateFormat = "mm/dd/yy",
+    var dateFormat = "yy-dd-mm",
       from = $( ".from" )
         .datepicker({
           defaultDate: "+1w",
@@ -105,7 +107,9 @@
                 foreach ($value['type'] as $typevalue) 
                 {
                     ?>
-                    <p><?php echo $typevalue['name'] . ": " . $typevalue['stock']; ?>
+                    <p><?php echo $typevalue['id']." ".$typevalue['name'].": ".$typevalue['stock']
+                    ." Need: ".(int)$typevalue['need']." Diff: ".(int)$typevalue['diff']
+                    ." Date: ".$typevalue['date']; ?>
                     <br><input type="number" placeholder="Сколько нужно" style="width: 200px;">
                     <label for="from">От</label>
                     <input type="text" class="from" name="from">
