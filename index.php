@@ -58,42 +58,20 @@
         </script>
           <script>
   $( function() {
-    var dateFormat = "yy-dd-mm",
-      from = $( ".from" )
-        .datepicker({
-          defaultDate: "+1w",
-          changeMonth: true,
-          numberOfMonths: 1
-        })
-        .on( "change", function() {
-          to.datepicker( "option", "minDate", getDate( this ) );
-        }),
-      to = $( ".to" ).datepicker({
+    
+    var to = $( ".to" ).datepicker({
         defaultDate: "+1w",
         changeMonth: true,
-        numberOfMonths: 1
+        numberOfMonths: 1,
+        dateFormat: "yy-mm-dd",
+        minDate: "0"
       })
       .on( "change", function() {
-        from.datepicker( "option", "maxDate", getDate( this ) );
+        
       });
  
-    function getDate( element ) {
-      var date;
-      try {
-        date = $.datepicker.parseDate( dateFormat, element.value );
-      } catch( error ) {
-        date = null;
-      }
- 
-      return date;
-    }
   } );
   </script>
-                      <label for="from">От</label>
-                    <input type="text" class="from" name="from">
-                    <label for="to">До</label>
-                    <input type="text" class="to" name="to">
-                      <br><br>
         <button class="button">Вычислить</button>
         <hr>
         <div id="accordion">
@@ -106,15 +84,16 @@
                 <?php
                 foreach ($value['type'] as $typevalue) 
                 {
+                    echo "<div name='{$key}' class='_name'>{$typevalue['name']}</div>";
+                    echo "<div name='{$key}' class='_stock'>Stock: {$typevalue['stock']}</div>";
+                    echo "<div name='{$key}' class='_need'>Need: {$typevalue['need']}</div>";
+                    echo "<div name='{$key}' class='_diff'>Diff: {$typevalue['diff']}</div>";
+                    echo "<div name='{$key}' class='_date'>Date: {$typevalue['date']}</div>";
                     ?>
-                    <p><?php echo $typevalue['id']." ".$typevalue['name'].": ".$typevalue['stock']
-                    ." Need: ".(int)$typevalue['need']." Diff: ".(int)$typevalue['diff']
-                    ." Date: ".$typevalue['date']; ?>
+                    <p>
                     <br><input type="number" placeholder="Сколько нужно" style="width: 200px;">
-                    <label for="from">От</label>
-                    <input type="text" class="from" name="from">
-                    <label for="to">До</label>
-                    <input type="text" class="to" name="to">
+                    <label for='<?php echo $key; ?>'>До</label>
+                    <input type="text" class="to _to_date" name='<?php echo $key; ?>'>
                     </p>
                     <?php
                 }
@@ -125,10 +104,6 @@
         ?>
         </div>
         <hr>
-                            <label for="from">От</label>
-                    <input type="text" class="from" name="from">
-                    <label for="to">До</label>
-                    <input type="text" class="to" name="to"><br><br>
         <button class="button">Вычислить</button>
         <?php
     }
