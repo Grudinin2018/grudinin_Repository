@@ -114,18 +114,31 @@
             if (type == 'цветущая')
             {
               if (value.need > value.stock) {
-                
+                console.log(key + ' Idi nahuy');
+
+                //Количество list
+                var list = getList(name);
+                console.log(list.stock); 
               }
             } 
             else if (type == 'детки')
             {
               if (value.need > value.stock) {
-                
+                console.log(key + ' Idi nahuy');
               }
             }
             if (type == 'лист')
             {
               if (value.need > value.stock) {
+                console.log(key + ' Idi nahuy');
+                var xyi = 0;
+                var nowtime = new Date ();
+                var date = new Date (value.date);
+                console.log(date.getTime()-nowtime.getTime());
+                var divTime = (date.getTime()-nowtime.getTime())/1000/60/60/24;
+                console.log(divTime);
+
+
                 
               }
             }
@@ -136,6 +149,15 @@
       });
  
   } );
+  function getDetki(name) { //возвращает объект деток
+    return _g_data[name+"_"+'детки'];
+  }
+  function getCvet(name) { //возвращает объект деток
+    return _g_data[name+"_"+'цветущая'];
+  }
+  function getList(name) { //возвращает объект деток
+    return _g_data[name+"_"+'лист'];
+  }
   </script>
         <button class="button _calc">Вычислить</button>
         <hr>
