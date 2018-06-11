@@ -119,6 +119,7 @@
                 //Количество list
                 var list = getList(name);
                 console.log(list.stock); 
+                console.log(list.need);
               }
             } 
             else if (type == 'детки')
