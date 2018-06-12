@@ -16,7 +16,7 @@
       $values_sql = rtrim($values_sql,",");
       $sql = "INSERT INTO my_prognoz (id,need,date) VALUES $values_sql
               ON DUPLICATE KEY UPDATE id=VALUES(id),need=VALUES(need),date=VALUES(date);";
-      mysqlQuery($sql);
+      //mysqlQuery($sql);
       error_log(print_r($sql, true));
     }
 
