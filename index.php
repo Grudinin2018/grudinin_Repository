@@ -58,6 +58,7 @@
         </script>
           <script>
           var _g_data = {};
+          var _g_string = '';
   $( function() {
     
     var to = $( ".to" ).datepicker({
