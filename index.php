@@ -12,9 +12,10 @@
         $values_sql .= '('.(int)$id.','.(int)$need.'),';
       }
       $values_sql = rtrim($values_sql,",");
-      $sql = "INSERT INTO table (id,need) VALUES $values_sql
+      $sql = "INSERT INTO my_prognoz (id,need) VALUES $values_sql
               ON DUPLICATE KEY UPDATE id=VALUES(id),need=VALUES(need);";
-      error_log(print_r($sql, true));
+      mysqlQuery($sql);
+      //error_log(print_r($sql, true));
     }
 
     ?>
