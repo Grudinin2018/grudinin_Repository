@@ -5,6 +5,16 @@
     if (isset($_GET['data'])) {
       $data = json_decode($_GET['data']);
       error_log(print_r($data, true));
+      $values_sql = '';
+      foreach ($data as $key => $value) {
+        $id = $value->id;
+        $need = $value->need;
+        $values_sql .= '('.$id.','.$need.'),';
+      }
+      $values_sql = rtrim($values_sql,",");
+      $sql = "INSERT INTO table (id,need) VALUES $values_sql
+              ON DUPLICATE KEY UPDATE id=VALUES(id),need=VALUES(need);";
+      error_log(print_r($sql, true));
     }
 
     ?>
