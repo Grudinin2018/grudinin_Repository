@@ -10,7 +10,8 @@
         $id = $value->id;
         $need = $value->need;
         $date = $value->date;
-        $values_sql .= '('.(int)$id.','.(int)$need.','.$date.'),';
+        $date = isset($date) ? $date : 'NULL';
+        $values_sql .= "('".(int)$id."','".(int)$need."','".$date."'),";
       }
       $values_sql = rtrim($values_sql,",");
       $sql = "INSERT INTO my_prognoz (id,need,date) VALUES $values_sql
