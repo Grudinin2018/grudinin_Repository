@@ -76,6 +76,11 @@
           var name = $(e).attr('name');
           _g_data[name] = {};
         });
+        $('._id').each(function (el, e) {
+          var name = $(e).attr('name');
+          var id = $(e).attr('value');
+          _g_data[name].id = id;
+        });
         $('._stock').each(function (el, e) {
           var stock = $(e).attr('value');
           var name = $(e).attr('name');
@@ -322,6 +327,7 @@
                 foreach ($value['type'] as $typevalue) 
                 {
                   $ska_name = $key.'_'.$typevalue['name'];
+                    echo "<div name='{$ska_name}' class='_id' value='{$typevalue['id']}'>{$typevalue['id']}</div>";
                     echo "<div name='{$ska_name}' class='_name'>{$typevalue['name']}</div>";
                     echo "<div name='{$ska_name}' class='_stock' value='{$typevalue['stock']}'>Stock: {$typevalue['stock']}</div>";
                     echo "<div name='{$ska_name}' class='_need' value='{$typevalue['need']}'>Need: {$typevalue['need']}</div>";
