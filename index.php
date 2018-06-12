@@ -10,13 +10,13 @@
         $id = $value->id;
         $need = $value->need;
         $date = $value->date;
-        $date = $date != '' ? $date : 'NULL';
-        $values_sql .= "('".(int)$id."','".(int)$need."','".$date."'),";
+        $date = $date != '' ? "'".$date."'" : "NULL";
+        $values_sql .= "('".(int)$id."','".(int)$need."',".$date."),";
       }
       $values_sql = rtrim($values_sql,",");
       $sql = "INSERT INTO my_prognoz (id,need,date) VALUES $values_sql
               ON DUPLICATE KEY UPDATE id=VALUES(id),need=VALUES(need),date=VALUES(date);";
-      //mysqlQuery($sql);
+      mysqlQuery($sql);
       error_log(print_r($sql, true));
     }
 
