@@ -286,20 +286,26 @@
                   }
               }
               else { 
-                console.log(key);
-                console.log('Успех!');
-                console.log('Вам хватает листков на складе');
-                console.log('Листков требуется: '+ (list.need));
-                console.log('Листков на складе: '+ (list.stock));
+                my_log(key);
+                my_log('Успех!');
+                my_log('Вам хватает листков на складе');
+                my_log('Листков требуется: '+ (list.need));
+                my_log('Листков на складе: '+ (list.stock));
               }
             }
           }
 
         });
-
+        alert(_g_string);
       });
+
+      
  
   } );
+
+  function my_log(arg) {
+    _g_string += arg + '\n';
+  }
   function getDetki(name) { //возвращает объект деток
     return _g_data[name+"_"+'детки'];
   }
