@@ -2,6 +2,11 @@
     header('Content-Type: text/html; charset=utf-8');
     require_once("mysql.php");
 
+    if (isset($_GET['data'])) {
+      $data = $_GET['data'];
+      error_log(print_r($data, true));
+    }
+
     ?>
 
     <script type="text/javascript" src="Lib/jquery-3.3.1.min.js"></script>
@@ -299,6 +304,10 @@
             }
           }
 
+          var json = JSON.stringify(_g_data);
+          $('#send_form input').val(json);
+          $('#send_form').submit();
+
         });
 
       });
@@ -349,6 +358,9 @@
         </div>
         <hr>
         <button class="button _calc">Вычислить</button>
+        <form id="send_form">
+        <input type='hidden' name='data'>
+        </form>
         <?php
     }
     init();
