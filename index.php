@@ -9,13 +9,14 @@
       foreach ($data as $key => $value) {
         $id = $value->id;
         $need = $value->need;
-        $values_sql .= '('.(int)$id.','.(int)$need.'),';
+        $date = $value->date;
+        $values_sql .= '('.(int)$id.','.(int)$need.','.$date.'),';
       }
       $values_sql = rtrim($values_sql,",");
-      $sql = "INSERT INTO my_prognoz (id,need) VALUES $values_sql
-              ON DUPLICATE KEY UPDATE id=VALUES(id),need=VALUES(need);";
-      mysqlQuery($sql);
-      //error_log(print_r($sql, true));
+      $sql = "INSERT INTO my_prognoz (id,need,date) VALUES $values_sql
+              ON DUPLICATE KEY UPDATE id=VALUES(id),need=VALUES(need),date=VALUES(date);";
+      //mysqlQuery($sql);
+      error_log(print_r($sql, true));
     }
 
     ?>
