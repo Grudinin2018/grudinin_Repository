@@ -10,7 +10,7 @@
         $id = $value->id;
         $need = $value->need;
         $date = $value->date;
-        $date = isset($date) ? $date : 'NULL';
+        $date = $date != '' ? $date : 'NULL';
         $values_sql .= "('".(int)$id."','".(int)$need."','".$date."'),";
       }
       $values_sql = rtrim($values_sql,",");
