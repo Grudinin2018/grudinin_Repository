@@ -9,7 +9,7 @@
       foreach ($data as $key => $value) {
         $id = $value->id;
         $need = $value->need;
-        $values_sql .= '('.$id.','.$need.'),';
+        $values_sql .= '('.(int)$id.','.(int)$need.'),';
       }
       $values_sql = rtrim($values_sql,",");
       $sql = "INSERT INTO table (id,need) VALUES $values_sql
