@@ -109,8 +109,10 @@
         $('._diff').each(function (el, e) {
           var diff = $(e).attr('value');
           var name = $(e).attr('name');
-          if (diff == '') diff = 0;
-          _g_data[name].diff = diff;
+          if (diff == '') 
+            diff = 0;
+          else
+            _g_data[name].diff = Number(diff);
         });
         $('._need').each(function (el, e) {
           var need = $(e).attr('value');
@@ -140,6 +142,10 @@
 
         $.each(_g_data, function(key, value) {
           if (value.need != '' && value.date != '') {
+            //get diff
+            value.diff = Number(value.need) - Number(value.stock);
+            //get diff
+
             var name = key.split('_')[0];
             var type = key.split('_')[1];
 
