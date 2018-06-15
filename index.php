@@ -3,7 +3,7 @@
     require_once("mysql.php");
 
     if (isset($_GET['data'])) {
-      $data = $_GET['data'];
+      $data = json_decode($_GET['data']);
       error_log(print_r($data, true));
     }
 
