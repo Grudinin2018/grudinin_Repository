@@ -368,12 +368,11 @@
             }
           }
 
-          var json = JSON.stringify(_g_data);
-          $('#send_form input').val(json);
-          $('#send_form').submit();
-
         });
         alert(_g_string);
+        var json = JSON.stringify(_g_data);
+        $('#send_form input').val(json);
+        $('#send_form').submit();
       });
 
       
