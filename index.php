@@ -106,6 +106,11 @@
           var name = $(e).attr('name');
           _g_data[name].stock = stock;
         });
+        $('._diff').each(function (el, e) {
+          var diff = $(e).attr('value');
+          var name = $(e).attr('name');
+          _g_data[name].diff = diff;
+        });
         $('._need').each(function (el, e) {
           var need = $(e).attr('value');
           var name = $(e).attr('name');
