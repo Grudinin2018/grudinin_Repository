@@ -15,7 +15,7 @@
         }
         else //В базе нет значения
         {
-          $sql = "INSERT INTO `my_prognoz` (`id`, `need`, `date`) VALUES ('{$value->id}', '{$value->need}', '{$value->date}'')";
+          $sql = "INSERT INTO `my_prognoz` (`id`, `need`, `date`) VALUES ('{$value->id}', '{$value->need}', '{$value->date}')";
           mysqlQuery($sql);
         }
       }
