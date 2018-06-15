@@ -124,7 +124,7 @@
         });
         $('._to_date').each(function (el, e) {
           var name = $(e).attr('name');
-          if (_g_data[name].date == '') {
+          if (e.value != '') {
             date = e.value;
             $.datepicker.parseDate( "yy-mm-dd", date );
             _g_data[name].date = date;
