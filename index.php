@@ -106,7 +106,7 @@
           _g_data[name].need = need;
         });
         $('._to_need').each(function (el, e) {
-          console.log($(e).val());
+          console.log(typeof $(e).val());
           if ($(e).val() == '') {
             var name = $(e).attr('name');
             _g_data[name].need = $(e).val();
@@ -381,7 +381,7 @@
         alert(_g_string);
         var json = JSON.stringify(_g_data);
         $('#send_form input').val(json);
-        $('#send_form').submit();
+        //$('#send_form').submit();
       });
 
       
