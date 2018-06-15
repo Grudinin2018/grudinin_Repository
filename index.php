@@ -106,8 +106,7 @@
           _g_data[name].need = need;
         });
         $('._to_need').each(function (el, e) {
-          console.log(typeof $(e).val());
-          if ($(e).val() == '') {
+          if ($(e).val() != '') {
             var name = $(e).attr('name');
             _g_data[name].need = $(e).val();
           }
