@@ -109,6 +109,7 @@
         $('._diff').each(function (el, e) {
           var diff = $(e).attr('value');
           var name = $(e).attr('name');
+          if (diff == '') diff = 0;
           _g_data[name].diff = diff;
         });
         $('._need').each(function (el, e) {
