@@ -10,12 +10,13 @@
         $res = mysqlQuery($sql);
         if ($res->num_rows > 0) //В базе уже есть значение
         {
-          $sql = "UPDATE `my_prognoz` SET `need` = '{$value->need}', `date` = '{$value->date}' WHERE `id` = '{$value->id}'";
+          $sql = "UPDATE `my_prognoz` SET `need` = '{$value->need}', `date` = '{$value->date}', `diff` = '{$value->diff}'
+                  WHERE `id` = '{$value->id}'";
           mysqlQuery($sql);
         }
         else //В базе нет значения
         {
-          $sql = "INSERT INTO `my_prognoz` (`id`, `need`, `date`) VALUES ('{$value->id}', '{$value->need}', '{$value->date}')";
+          $sql = "INSERT INTO `my_prognoz` (`id`, `need`, `date`, `diff`) VALUES ('{$value->id}', '{$value->need}', '{$value->date}', '{$value->diff}')";
           mysqlQuery($sql);
         }
       }
@@ -143,7 +144,7 @@
         $.each(_g_data, function(key, value) {
           if (value.need != '' && value.date != '') {
             //get diff
-            value.diff = Number(value.need) - Number(value.stock);
+            value.diff = Number(value.stock) - Number(value.need);
             //get diff
 
             var name = key.split('_')[0];
