@@ -144,7 +144,7 @@
         $.each(_g_data, function(key, value) {
           if (value.need != '' && value.date != '') {
             //get diff
-            value.diff = Number(value.stock) - Number(value.need);
+            value.diff = Number(value.need) - Number(value.stock);
             //get diff
 
             var name = key.split('_')[0];
