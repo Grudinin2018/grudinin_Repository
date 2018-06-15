@@ -104,16 +104,12 @@
           var need = $(e).attr('value');
           var name = $(e).attr('name');
           _g_data[name].need = need;
-          console.log('Взяли с базы');
-          console.log(_g_data[name].need);
-          
         });
         $('._to_need').each(function (el, e) {
-           var name = $(e).attr('name');
-          if (_g_data[name].need == '') {
+          console.log($(e).val());
+          if ($(e).val() == '') {
+            var name = $(e).attr('name');
             _g_data[name].need = $(e).val();
-            console.log('Взяли со страницы');
-            console.log(_g_data[name].need);
           }
         });
         $('._date').each(function (el, e) {
