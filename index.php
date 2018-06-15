@@ -5,6 +5,11 @@
     if (isset($_GET['data'])) {
       $data = json_decode($_GET['data']);
       error_log(print_r($data, true));
+      foreach ($data as $key => $value) {
+        $sql = "SELECT `id` FROM `my_prognoz` WHERE `id` = '{$value->id}'";
+        $res = mysqlQuery($query);
+        error_log(print_r($res, true));
+      }
     }
 
     ?>
