@@ -428,7 +428,7 @@
                     echo "<div name='{$ska_name}' class='_name'>{$typevalue['name']}</div>";
                     echo "<div name='{$ska_name}' class='_stock' value='{$typevalue['stock']}'>Stock: {$typevalue['stock']}</div>";
                     echo "<div name='{$ska_name}' class='_need' value='{$typevalue['need']}'>Need: {$typevalue['need']}</div>";
-                    echo "<div name='{$ska_name}' class='_diff'>Diff: {$typevalue['diff']}</div>";
+                    echo "<div name='{$ska_name}' class='_diff' value='{$typevalue['diff']}'>Diff: {$typevalue['diff']}</div>";
                     echo "<div name='{$ska_name}' class='_date' value='{$typevalue['date']}'>Date: {$typevalue['date']}</div>";
                     ?>
                     <p>
