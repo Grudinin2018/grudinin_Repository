@@ -8,9 +8,15 @@
       foreach ($data as $key => $value) {
         $sql = "SELECT `id` FROM `my_prognoz` WHERE `id` = '{$value->id}'";
         $res = mysqlQuery($sql);
-        if ($res->num_rows > 0)
+        if ($res->num_rows > 0) //В базе уже есть значение
         {
-          error_log(print_r($res, true));
+          $sql = "UPDATE `my_prognoz` SET `need` = '{$value->need}' WHERE `id` = '{$value->id}'";
+          mysqlQuery($sql);
+        }
+        else //В базе нет значения
+        {
+          $sql = "INSERT INTO `my_prognoz` (`id`, `need`) VALUES ('{$value->id}', '{$value->need}')";
+          mysqlQuery($sql);
         }
       }
     }
@@ -380,7 +386,7 @@
         alert(_g_string);
         var json = JSON.stringify(_g_data);
         $('#send_form input').val(json);
-        //$('#send_form').submit();
+        $('#send_form').submit();
       });
 
       
