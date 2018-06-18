@@ -176,7 +176,7 @@
               return a;
             }
             //---------------------------------------------------------------цветущая-----------------------------------------
-            if (type == 'цветущая')
+            if ((type == 'цветущая') && (value.need>0))
             {
               my_log(key);
                   my_log('Цветущих требуется: ' + cvet.need);
@@ -288,7 +288,7 @@
                   }
                 }
               }
-              my_log('---------------------------------------------------------------------------------------------');
+              my_log('----------------------------------------------------');
             }
             //---------------------------------------------------------------детки----------------------------------------- 
             else if (type == 'детки')
@@ -331,6 +331,7 @@
                 my_log('Деток требуется: '+ (detki.need));
                 my_log('Деток на складе: '+ (detki.stock));
               }
+              my_log('----------------------------------------------------');
             }
             //---------------------------------------------------------------лист-----------------------------------------
             if (type == 'лист')
@@ -392,6 +393,7 @@
                 my_log('Листков требуется: '+ (list.need));
                 my_log('Листков на складе: '+ (list.stock));
               }
+              my_log('----------------------------------------------------');
             }
           }
 
@@ -432,12 +434,12 @@
                 foreach ($value['type'] as $typevalue) 
                 {
                   $ska_name = $key.'_'.$typevalue['name'];
-                    echo "<div name='{$ska_name}' class='_id' value='{$typevalue['id']}'>{$typevalue['id']}</div>";
                     echo "<div name='{$ska_name}' class='_name'>{$typevalue['name']}</div>";
-                    echo "<div name='{$ska_name}' class='_stock' value='{$typevalue['stock']}'>Stock: {$typevalue['stock']}</div>";
-                    echo "<div name='{$ska_name}' class='_need' value='{$typevalue['need']}'>Need: {$typevalue['need']}</div>";
-                    echo "<div name='{$ska_name}' class='_diff' value='{$typevalue['diff']}'>Diff: {$typevalue['diff']}</div>";
-                    echo "<div name='{$ska_name}' class='_date' value='{$typevalue['date']}'>Date: {$typevalue['date']}</div>";
+                    echo "<div name='{$ska_name}' class='_id' value='{$typevalue['id']}'>id: {$typevalue['id']}</div>";
+                    echo "<div name='{$ska_name}' class='_stock' value='{$typevalue['stock']}'>На складе: {$typevalue['stock']}</div>";
+                    echo "<div name='{$ska_name}' class='_need' value='{$typevalue['need']}'>Нужно: {$typevalue['need']}</div>";
+                    echo "<div name='{$ska_name}' class='_diff' value='{$typevalue['diff']}'>Разница: {$typevalue['diff']}</div>";
+                    echo "<div name='{$ska_name}' class='_date' value='{$typevalue['date']}'>Дата: {$typevalue['date']}</div>";
                     ?>
                     <p>
                     <br><input type="number" name='<?php echo $ska_name ?>' class="_to_need" placeholder="Сколько нужно" style="width: 200px;">
