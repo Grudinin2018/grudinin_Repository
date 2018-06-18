@@ -2,8 +2,8 @@
     header('Content-Type: text/html; charset=utf-8');
     require_once("mysql.php");
 
-    if (isset($_GET['data'])) {
-      $data = json_decode($_GET['data']);
+    if (isset($_POST['data'])) {
+      $data = json_decode($_POST['data']);
       error_log(print_r($data, true));
       foreach ($data as $key => $value) {
         $sql = "SELECT `id` FROM `my_prognoz` WHERE `id` = '{$value->id}'";
@@ -456,7 +456,7 @@
         </div>
         <hr>
         <button class="button _calc">Вычислить</button>
-        <form id="send_form">
+        <form id="send_form" method='POST'>
         <input type='hidden' name='data'>
         </form>
         <?php
